@@ -98,6 +98,9 @@ function authController(){
             return res.redirect('/login')
         },
         orderPage(req,res){
+            if(!req.user){
+                return res.redirect('/login')
+            }
             return res.redirect(_RedirectUrl(req))
         }
 

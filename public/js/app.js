@@ -27013,7 +27013,7 @@ updateStatus(order); //socket
 var socket = io(); //joining the server and client
 
 if (order) {
-  socket.emit('join', 'order_${order_id}');
+  socket.emit('join', "order_".concat(order._id));
 }
 
 var adminAreaPath = window.location.pathname;
@@ -27032,9 +27032,8 @@ socket.on('orderUpdated', function (data) {
   new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
     type: 'success',
     timeout: 1000,
-    progressBar: false,
-    layout: 'bottomRight',
-    text: 'Order updated!'
+    text: 'Order updated!',
+    progressBar: false
   }).show();
 });
 

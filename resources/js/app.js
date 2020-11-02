@@ -78,11 +78,11 @@ updateStatus(order);
 
 //socket
 
-let socket = io()
+let socket = io();
 
 //joining the server and client
 if(order){
-    socket.emit('join','order_${order_id}')
+    socket.emit('join',`order_${order._id}`)
 }
 
 let adminAreaPath = window.location.pathname
@@ -93,16 +93,15 @@ if(adminAreaPath.includes('admin')){
 }
 
 
-socket.on('orderUpdated',( data ) => {
+socket.on('orderUpdated', (data) => {
     const updatedOrder = { ...order }
     updatedOrder.updatedAt = moment().format()
     updatedOrder.status = data.status
     updateStatus(updatedOrder)
     new Noty({
         type: 'success',
-        timeout:1000,
+        timeout: 1000,
+        text: 'Order updated!',
         progressBar: false,
-        layout: 'bottomRight',
-        text: 'Order updated!'
     }).show();
 })
