@@ -8,6 +8,10 @@ function authController(){
         return req.user.role === 'admin'?'/admin/orders': '/cart'
     }
 
+    const _RedirectUrl = (req) => {
+        return req.user.role === 'admin'?'/admin/orders': '/customer/orders'
+    }
+
     return{
         login(req,res){
             res.render("auth/login")
@@ -92,7 +96,11 @@ function authController(){
         logout(req,res){
             req.logout()
             return res.redirect('/login')
+        },
+        orderPage(req,res){
+            return res.redirect(_RedirectUrl(req))
         }
+
 }
 }
 

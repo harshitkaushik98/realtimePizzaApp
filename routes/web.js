@@ -36,6 +36,10 @@ function initRoutes(app)
     app.get('/admin/orders',admin,adminOrderController().index)
     app.post('/admin/order/status',admin,statusController().update)
 
+
+    app.post('/orderpage',authController().orderPage) 
+   
+
 }
 
 module.exports = initRoutes;
