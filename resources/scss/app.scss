@@ -176,6 +176,9 @@ section.status {
     background: $gray;
 }
 
+.status-box ul li.step-completed span {
+    color: $gray;
+}
 // Current status
 .status-box ul li.current span {
     color: $primary;
